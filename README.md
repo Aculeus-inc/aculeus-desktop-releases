@@ -1,7 +1,44 @@
 # Aculeus desktop releases
 
-Installers for the Aculeus desktop app. Download the file for your computer from
-the [latest release](https://github.com/Aculeus-inc/aculeus-desktop-releases/releases/latest):
+Installers for the Aculeus desktop app.
+
+## Install
+
+Run one command. It downloads the installer for your computer from the
+[latest release](https://github.com/Aculeus-inc/aculeus-desktop-releases/releases/latest),
+installs Aculeus and opens it.
+
+- macOS or Linux, in Terminal:
+
+  ```sh
+  curl -fsSL https://github.com/Aculeus-inc/aculeus-desktop-releases/releases/latest/download/install.sh | sh
+  ```
+
+- Windows, in PowerShell:
+
+  ```powershell
+  irm https://github.com/Aculeus-inc/aculeus-desktop-releases/releases/latest/download/install.ps1 | iex
+  ```
+
+On a Mac it picks the Apple silicon or Intel build and installs Aculeus in
+Applications (or `~/Applications` without administrator rights); installed this
+way, macOS does not ask you to approve the unsigned app. On Debian and Ubuntu it
+installs the `.deb` with apt, which asks for your password, and on other Linux
+systems it puts the AppImage in `~/Applications`. On Windows it installs Aculeus
+for your user account.
+
+The Windows and Linux apps update themselves from this page: they check when they
+start and every ten minutes, download a new release in the background and offer to
+restart into it. macOS installs only signed updates, so until the app is signed,
+run the command again for each new release.
+
+The app runs the Aculeus harness, which gives it its agents, commands, skills
+and permission rules. Aculeus builders install the harness from its repository
+first (`install/install.sh`, or `install\install.ps1` on Windows). Without it the
+app says so when it opens and turns OpenCode Zen off, so prompts go only to a
+provider you connect.
+
+## Download a file instead
 
 | Computer | File |
 |---|---|
@@ -10,7 +47,7 @@ the [latest release](https://github.com/Aculeus-inc/aculeus-desktop-releases/rel
 | Windows | `aculeus-desktop-win-x64.exe` |
 | Linux | `aculeus-desktop-linux-x86_64.AppImage`, or `aculeus-desktop-linux-amd64.deb` for Debian and Ubuntu |
 
-The installers are unsigned for now, so approve the app once:
+These installers are unsigned for now, so approve the app once:
 
 - macOS: open the `.dmg` and drag Aculeus to Applications. The first time it
   opens, macOS says it cannot verify the app; open System Settings, Privacy &
@@ -20,13 +57,9 @@ The installers are unsigned for now, so approve the app once:
 - Linux: make the AppImage executable and run it, or install the `.deb` with
   `sudo apt install ./aculeus-desktop-linux-amd64.deb`.
 
-The Windows and Linux apps update themselves from this page: they check when they
-start and every ten minutes, download a new release in the background and offer to
-restart into it. macOS installs only signed updates, so until the app is signed,
-download each new `.dmg` and drag Aculeus over the old app.
-
-The other files in each release (`latest.yml`, `latest-linux.yml` and the
-`.blockmap`) are what the apps read to update; you do not need them.
+The other files in each release are what the commands and the apps read:
+`install.sh` and `install.ps1` are the commands' scripts, and `latest.yml`,
+`latest-linux.yml` and the `.blockmap` tell the apps about updates.
 
 ## Notices
 
