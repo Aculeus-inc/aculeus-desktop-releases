@@ -35,8 +35,16 @@ run the command again for each new release.
 The app runs the Aculeus harness, which gives it its agents, commands, skills
 and permission rules. Aculeus builders install the harness from its repository
 first (`install/install.sh`, or `install\install.ps1` on Windows). Without it the
-app says so when it opens and turns OpenCode Zen off, so prompts go only to a
-provider you connect.
+app explains how to install it. Prompts go only to a provider you connect.
+
+## Updating the harness
+
+The desktop update installs the app and its bundled document and Chrome tools.
+Agents, skills, provider presets and client overlays live in the separate harness
+checkout. In that checkout, run `git pull --ff-only`, rerun `install/install.ps1`
+on Windows or `install/install.sh` on macOS/Linux, and restart Aculeus. Keep your
+client settings in their existing overlays. This step adds the Inference.net
+preset and the latest document/browser instructions for older harness installs.
 
 ## Download a file instead
 
